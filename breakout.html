@@ -1,0 +1,170 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!doctype html>
+<html>
+	<head>
+		<title>Breakout</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="https://static.codehs.com/gulp/cb01b4a22ffd3971572a8a1ab9f3b7c4cb17f383/chs-js-lib/chs.js"></script>
+		<script>
+                      window.onload = function() {
+var NUM_ROWS = 8;
+var BRICK_TOP_OFFSET = 10;
+var BRICK_SPACING = 2;
+var NUM_BRICKS_PER_ROW = 10;
+var BRICK_HEIGHT = 10;
+var SPACE_FOR_BRICKS = getWidth() - (NUM_BRICKS_PER_ROW + 1) * BRICK_SPACING;
+var BRICK_WIDTH = SPACE_FOR_BRICKS / NUM_BRICKS_PER_ROW;
+var brick;
+var ball;
+var dx = 2;
+var dy = 4;
+var paddle;
+
+
+/* Constants for ball and paddle */
+var PADDLE_WIDTH = 80;
+var PADDLE_HEIGHT = 15;
+var PADDLE_OFFSET = 10;
+
+var BALL_RADIUS = 15;
+
+function start(){
+	drawBricks();
+	
+	placeBall(getWidth()/2, getHeight()/2);
+    
+    createPaddle(getWidth()/2, getHeight() - (PADDLE_OFFSET + PADDLE_HEIGHT));
+    mouseMoveMethod(movePaddle);
+
+    setTimer(ballMove, 20);
+    
+    
+}
+
+function drawBricks(){
+    for(var j = 0; j < NUM_ROWS; j++){
+        for(var y = 0; y < NUM_BRICKS_PER_ROW; y++){
+            bricks(y, j);
+         }
+    }
+}
+
+function bricks(i, j){
+    brick = new Rectangle (BRICK_WIDTH, BRICK_HEIGHT);
+    brick.setPosition((BRICK_SPACING+BRICK_WIDTH)*i + BRICK_SPACING, (BRICK_SPACING+BRICK_HEIGHT)*j+BRICK_TOP_OFFSET);
+    if(j == 2 || j == 3){
+        brick.setColor(Color.orange);
+    }else{
+        brick.setColor(Color.red);
+    }
+    if(j == 4 || j == 5){
+        brick.setColor(Color.green);
+    }else if(j == 6 || j == 7){
+        brick.setColor(Color.blue);
+    }
+    add(brick);
+}
+
+function createPaddle(x, y){
+    paddle = new Rectangle(PADDLE_WIDTH, PADDLE_HEIGHT);
+    paddle.setPosition(x, y);
+    add(paddle);
+}
+function movePaddle(e){
+    paddle.setPosition(e.getX() - paddle.getWidth()/2, getHeight() - PADDLE_OFFSET - PADDLE_HEIGHT);
+    if(e.getX() + 40 >= getWidth()){
+        paddle.setPosition(getWidth() - paddle.getWidth(), getHeight() - PADDLE_OFFSET - PADDLE_HEIGHT);
+    }
+    if(e.getX() - 40 <= 0){
+        paddle.setPosition(0, getHeight() - PADDLE_OFFSET - PADDLE_HEIGHT);
+    }
+}
+
+function placeBall(x, y){
+    ball = new Circle(BALL_RADIUS);
+    ball.setPosition(x,y);
+    add(ball);
+}
+
+function ballMove(){
+    checkWall();
+    ball.move(dx, dy);
+    breakBricksTop();
+    breakBricksLeft();
+    breakBricksRight();
+    breakBricksBot();
+}
+
+function checkWall(){
+    if(ball.getX() + BALL_RADIUS > getWidth()){
+        dx = -dx;
+    }
+    if(ball.getY() + BALL_RADIUS > getHeight()){
+        ball.setPosition(getWidth()/2, getHeight()/2);
+    }
+    if(ball.getX() - BALL_RADIUS < 0){
+        dx = -dx;
+    }
+    if(ball.getY() - BALL_RADIUS < 0){
+        dy = -dy;
+    }
+    var elem = getElementAt(ball.getX(), ball.getY() + BALL_RADIUS);
+    if(elem != null && elem.getColor() == Color.black){
+        dy=-dy
+    }
+    
+}
+
+function breakBricksTop(){
+    var elem = getElementAt(ball.getX(), ball.getY() - BALL_RADIUS);
+    if(elem != null){
+        remove(elem);
+        dy=-dy
+    }
+}
+
+function breakBricksLeft(){
+    var elem = getElementAt(ball.getX() - BALL_RADIUS, ball.getY());
+    if(elem != null && elem != elem.getColor() == Color.black){
+        remove(elem);
+        dx=-dx
+    }
+}
+
+function breakBricksRight(){
+    var elem = getElementAt(ball.getX() + BALL_RADIUS, ball.getY());
+    if(elem != null && elem != elem.getColor() == Color.black){
+        remove(elem);
+        dx=-dx
+    }
+}
+
+function breakBricksBot(){
+    var elem = getElementAt(ball.getX(), ball.getY() + BALL_RADIUS);
+    if(elem != null && elem != elem.getColor() == Color.black){
+        remove(elem);
+        dy=-dy
+    }
+}
+
+                        if (typeof start === 'function') {
+                            start();
+                        }
+                    };
+  	</script>
+		<style>
+			canvas {
+    				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="canvasContainer" width="100%" style="width: 100%; height: 100%; overflow: hidden;">
+			<canvas width="400" height="500" class="codehs-editor-canvas"></canvas>
+		</div>
+	</body>
+</html>
+
