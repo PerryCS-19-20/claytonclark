@@ -47,23 +47,28 @@ and open the template in the editor.
         }
         
     </style>
+    <script>
+        function change(newcolor){
+            document.body.style.backgroundColor=newcolor;
+        }
+    </script>
     <body>
         <h1>Color Background</h1>
       <table border="2" cellpadding="40" align="center">
         <tr>
-          <td id="y"><span onmouseover="change">Yellow</span></td>
-          <td id="b"><span onmouseover="change">Blue</td>
-          <td id="r"><span onmouseover="change">Red</td>
+          <td id="y"><span onmouseover="change('yellow')">Yellow</span></td>
+          <td id="b"><span onmouseover="change('blue')">Blue</td>
+          <td id="r"><span onmouseover="change('red')">Red</td>
         </tr>
         <tr>
-          <td id="g"><span onmouseover="change">Green</td>
-          <td id="p"><span onmouseover="change">Pink</td>
-          <td id="c"><span onmouseover="change">Crimson</td>
+          <td id="g"><span onmouseover="change('green')">Green</td>
+          <td id="p"><span onmouseover="change('pink')">Pink</td>
+          <td id="c"><span onmouseover="change('crimson')">Crimson</td>
         </tr>
         <tr>
-          <td id="dm"><span onmouseover="change">Dark Magenta</td>
-          <td id="cl"><span onmouseover="change">Coral</td>
-          <td id="g"><span onmouseover="change">Gold</td>
+          <td id="dm"><span onmouseover="change('darkmagenta')">Dark Magenta</td>
+          <td id="cl"><span onmouseover="change('coral')">Coral</td>
+          <td id="g"><span onmouseover="change('gold')">Gold</td>
         </tr>
       </table>
     </body>
