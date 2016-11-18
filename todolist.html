@@ -9,6 +9,18 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <div>TODO write content</div>
+        <textarea rows="10" cols="80" id="inputText">Input html to test here</textarea>
+        <button onclick="testHTML();">TEST!</button>
+        <br>
+        <ul id="text"></ul>
+        <script>
+            function testHTML() {
+                var userInput = document.getElementById("inputText");
+                var span= document.getElementById("text");   
+                var list = document.createElement("li");
+                    list.textContent=userInput.value;
+                span.appendChild(list);         
+            }
+        </script>
     </body>
 </html>
