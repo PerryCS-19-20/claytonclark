@@ -12,14 +12,14 @@ and open the template in the editor.
         <textarea rows="10" cols="80" id="inputText">Write what you did wrong here</textarea>
         <button onclick="punish();">Write</button>
         <br>
-        <ol id="text">I will not</ol>
+        <or id="text"></ol>
         <script>
             function punish(){
                 var userInput = document.getElementById("inputText");
                 var span= document.getElementById("text");
-                for(var i=0; i<100; i++){\
+                for(var i=0; i<100; i++){
                     var list = document.createElement("li");
-                    list.textContent=userInput.value;
+                    list.textContent= "I will not " +userInput.value;
                     span.appendChild(list);
                 }
             } 
