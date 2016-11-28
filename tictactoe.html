@@ -16,21 +16,29 @@ and open the template in the editor.
             text-align: center;
             font-size: 80px
         }
+        span{
+            text-align: center
+        }
+        body{
+            background-color: greenyellow;
+        }
     </style>
     
     <body>
         <script>
              var player = "X"
+             var win = false
              function play(cellid){
                  var move = document.getElementById(cellid);
-                 if(move.textContent==""){
+                 if(move.textContent=="" && win == false){
                     move.textContent=player;
+                    checkWin();
                     if (move.textContent=="X"){
-                         player="O";
+                         player="O"; 
                      }
-                    if(move.textContent=="O"){
-                         player="X";
-                     }
+                    if (move.textContent=="O"){
+                         player="X";                       
+                     }                     
                  }
              }
              function checkWin(){
@@ -47,15 +55,18 @@ and open the template in the editor.
                  var c1 = document.getElementById(c1id);
                  var c2 = document.getElementById(c2id);
                  var c3 = document.getElementById(c3id);
-                 if((cl.textContent == c2.textContent)&&(c2.textContent == c3.textContent)&&(c1.textContent != "")){
-                     win=true;
-                 }
-                 if (win = true){
-                     
+                 if((c1.textContent == c2.textContent)&&(c2.textContent == c3.textContent)&&(c1.textContent != "")){
+                     win=true;      
+                     c1.style.backgroundColor = "red";
+                     c2.style.backgroundColor = "red";
+                     c3.style.backgroundColor = "red";
+                     var text = document.getElementById("win");
+                     text.innerHTML = "<b><h1>YOU WON THE GAME!!</h1></b>";
                  }
              }
         </script>
         <table border="1px" align="center">
+            <span id="win"></span>
             <tr>
                 <td id="1" onclick="play('1');"></td>
                 <td id="2" onclick="play('2');"></td>
