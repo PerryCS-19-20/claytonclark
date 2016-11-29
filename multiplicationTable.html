@@ -1,0 +1,54 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Times Table</title>
+        <meta charset=UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <style>
+            table, td, th{
+                border: solid 1px;
+            }
+            td {
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body onload="buildTimesTable()">
+        <script>
+            function buildTimesTable() {
+                var timesTable = document.createElement("table");
+                timesTable.id = "timesTable";
+                
+                var body = document.body;
+                body.appendChild(timesTable);
+                
+                for(var i = 0; i < 11;i++){
+                    var row = document.createElement("tr")
+                    timesTable.appendChild(row)
+                    
+                    for(var y = 0; y < 11; y++){
+                        var column;
+                        if(i == 0){
+                            column = document.createElement("th");
+                            column.textContent= y;
+                        }else{
+                            column = document.createElement("td");
+                            if(y == 0){
+                                
+                                column.textContent= i;
+                            }else{
+                                column.textContent= i*y;
+                            }
+                        }
+                        row.appendChild(column);
+                    }
+                }
+            }  
+        </script>
+
+    </body>
+</html>
