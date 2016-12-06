@@ -1,0 +1,31 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pythagorean's Theorem</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+           function calculate(){ 
+                var a = parseFloat(document.getElementById("lengthOfA").value);
+                var b = parseFloat(document.getElementById("lengthOfB").value);
+                var c = document.getElementById("lengthOfC");
+            
+                var add = Math.pow(a,2) + Math.pow(b,2);
+                lengthOfC.value = Math.pow(add, 1 / 2);
+           }
+        </script>
+        <style>
+            input[type=number]{
+                width: 64px
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Pythagorean's Theorem:</h1>
+        <img src='Pythagorean-Theorem.jpg' style='float: left; height: 150px; margin-right: 5px; width: 150px;'>
+        <h2>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></h2>
+    </body>
+</html>
