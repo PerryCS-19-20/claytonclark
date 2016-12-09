@@ -46,14 +46,13 @@ and open the template in the editor.
 
                 // Fill in the multiplication table
                 
-                for(var i = 0; i < 11;i++){
+                for(var i = 0; i < height;i++){
                     var row = document.createElement("tr")
                     timesTable.appendChild(row)
-                    //row.: width
                     if(i%3==0){                  
                         row.bgColor = "red";
                     }
-                    for(var y = 0; y < 11; y++){
+                    for(var y = 0; y < width; y++){
                         var column;                       
                         if(i == 0){                       
                             column = document.createElement("th");                            
