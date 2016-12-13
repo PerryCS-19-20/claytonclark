@@ -17,7 +17,11 @@ and open the template in the editor.
                 lengthOfC.value = Math.pow(add, 1 / 2);
            }
         </script>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <style>
+            body{
+                text-align: 
+            }
             input[type=number]{
                 width: 64px
             }
@@ -25,7 +29,14 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Pythagorean's Theorem:</h1>
-        <img src='Pythagorean-Theorem.jpg' style='float: left; height: 150px; margin-right: 5px; width: 150px;'>
+        <img src='Pythagorean-Theorem.jpg' style='float: center; height: 250px; margin-right: 5px; width: 350px;'>
         <h2>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></h2>
+        
+        A: <input type="number" id="lengthOfA" placeholder="A Length"><br>
+        B: <input type="number" id="lengthOfB" placeholder="B Length">
+        <button onclick="calculate();">Solve</button>
+        <br><br>
+        C: <input type="output" id="lengthOfC" placeholder="C Length" readonly>
+        
     </body>
 </html>
