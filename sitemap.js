@@ -16,7 +16,7 @@
             createList.appendChild(list2);
             var a2 = document.createElement("a")
             a2.textContent = "Biography";
-            a2.href = "popup.html";
+            a2.href = "bio.html";
             list2.appendChild(a2);
             
             var list3 = document.createElement("li");
