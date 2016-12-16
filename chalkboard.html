@@ -8,22 +8,27 @@ and open the template in the editor.
         <title></title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <script src="sitemap.js"></script>
+        <link rel="stylesheet" type="text/css" href="menubar.css">
     </head>
-    <body>
+
+    <body onload="buildMap('menubar');">
+        <div id="menubar"></div>
         <textarea rows="10" cols="80" id="inputText">Write what you did wrong here</textarea>
         <button onclick="punish();">Write</button>
         <br>
         <or id="text"></ol>
-        <script>
-            function punish(){
-                var userInput = document.getElementById("inputText");
-                var span= document.getElementById("text");
-                for(var i=0; i<100; i++){
-                    var list = document.createElement("li");
-                    list.textContent= "I will not " +userInput.value;
-                    span.appendChild(list);
-                }
-            } 
-        </script>
-    </body>
+    <script>
+        function punish() {
+            var userInput = document.getElementById("inputText");
+            var span = document.getElementById("text");
+            for (var i = 0; i < 100; i++) {
+                var list = document.createElement("li");
+                list.textContent = "I will not " + userInput.value;
+                span.appendChild(list);
+            }
+        }
+    </script>
+</body>
 </html>
